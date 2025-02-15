@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Quiz Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Login Box -->
+    <div id="login-container">
+        <h1>Welcome to the Quiz!</h1>
+        <label for="username">Enter your name:</label><br>
+        <input type="text" id="username" placeholder="Your Name"><br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Firebase SDK & Initialization -->
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDX0_vo237bFjBM42JfeBfKgR2JqT0T1pw",
+            authDomain: "quiz-website-ff879.firebaseapp.com",
+            databaseURL: "https://quiz-website-ff879-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "quiz-website-ff879",
+            storageBucket: "quiz-website-ff879.appspot.com",
+            messagingSenderId: "654431450111",
+            appId: "1:654431450111:web:57de9375d327b6531bedca"
+        };
+
+        // Initialize Firebase
+        initializeApp(firebaseConfig);
+        console.log("Firebase Initialized Successfully!");
+    </script>
+
+    <!-- Login Script -->
+    <script>
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            if (username) {
+                localStorage.setItem("username", username);
+                window.location.href = "welcome.html"; // ✅ Redirect to welcome.html
+            } else {
+                alert("Please enter your name!");
+            }
+        }
+    </script>
+
+</body>
+</html>

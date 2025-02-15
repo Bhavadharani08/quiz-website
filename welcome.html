@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Quiz Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Welcome Box -->
+    <div id="welcome-container">
+        <h2>Welcome, <span id="user-name"></span>!</h2>
+        <p>Get ready to test your knowledge!</p>
+        <button onclick="startQuiz()" aria-label="Start the quiz">Start Quiz</button>
+        <button onclick="logout()" aria-label="Logout and return to login page">Logout</button>
+    </div>
+
+    <script>
+        // Get username from localStorage
+        const username = localStorage.getItem("username");
+
+        if (!username) {
+            // If no username, redirect to login page
+            window.location.href = "index.html";
+        } else {
+            // Display username or "Guest" if it's empty
+            document.getElementById("user-name").textContent = username || "Guest";
+        }
+
+        function startQuiz() {
+            window.location.href = "quiz.html"; // Redirect to quiz page
+        }
+
+        function logout() {
+            localStorage.removeItem("username"); // Remove username
+            window.location.href = "index.html"; // Redirect to login
+        }
+    </script>
+
+</body>
+</html>
